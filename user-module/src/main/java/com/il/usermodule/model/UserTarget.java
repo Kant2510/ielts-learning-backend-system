@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -13,26 +14,31 @@ public class UserTarget {
     @Id
     private UUID id;
     
-    @Min(0)
-    private int duration;
-    
+//    @Min(0)
+//    private int duration;
+
+    @Column(name = "target_reading")
     @Min(0)
     @Max(9)
     private float reading;
-    
+
+    @Column(name = "target_listening")
     @Min(0)
     @Max(9)
     private float listening;
-    
+
+    @Column(name = "target_writing")
     @Min(0)
     @Max(9)
     private float writing;
-    
+
+    @Column(name = "target_speaking")
     @Min(0)
     @Max(9)
     private float speaking;
-    
-    private LocalDate nextExamDate;
+
+    @Column(name = "next_exam_date")
+    private Timestamp nextExamDate;
 
 //    @OneToOne
 //    @JoinColumn(name = "id", nullable = false)
@@ -42,9 +48,9 @@ public class UserTarget {
         return id;
     }
 
-    public int getDuration() {
-        return duration;
-    }
+//    public int getDuration() {
+//        return duration;
+//    }
 
     public float getReading() {
         return reading;
@@ -62,7 +68,7 @@ public class UserTarget {
         return speaking;
     }
 
-    public LocalDate getNextExamDate() {
+    public Timestamp getNextExamDate() {
         return nextExamDate;
     }
 

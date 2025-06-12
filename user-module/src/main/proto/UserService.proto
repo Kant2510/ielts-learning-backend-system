@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "user";
+
+service UserService {
+  rpc CreateUser (UserRequest) returns (UserResponse);
+}
+
+message UserRequest {
+  string id = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string avatar = 4;
+  bool is_email_notification = 5;
+  int64 vocab_usage_count = 6;
+}
+
+message UserResponse {
+  string id = 1;
+  string status = 2;
+}

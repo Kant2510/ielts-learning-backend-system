@@ -11,7 +11,7 @@ import com.il.usermodule.service.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping("/user")
 public class UserController {
     private final UserService userService;
 
@@ -19,7 +19,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    // Define endpoints for user operations here
+    // Define endpoints for user operations here,
     // For example, to get all users:
     @GetMapping
     public List<UserResponseDTO> getAllUsers() {

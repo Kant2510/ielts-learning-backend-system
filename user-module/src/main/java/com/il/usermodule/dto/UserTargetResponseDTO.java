@@ -2,7 +2,7 @@ package com.il.usermodule.dto;
 
 public class UserTargetResponseDTO {
     private String id;
-    private int duration;
+//    private int duration;
     private float reading;
     private float listening;
     private float writing;
@@ -17,13 +17,13 @@ public class UserTargetResponseDTO {
         this.id = id;
     }
 
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
+//    public int getDuration() {
+//        return duration;
+//    }
+//
+//    public void setDuration(int duration) {
+//        this.duration = duration;
+//    }
 
     public float getReading() {
         return reading;
