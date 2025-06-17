@@ -43,6 +43,16 @@ public class UserTarget {
 //    @OneToOne
 //    @JoinColumn(name = "id", nullable = false)
 //    private User user;
+    public UserTarget() {}
+
+    public UserTarget(UUID id, float reading, float listening, float writing, float speaking, Timestamp nextExamDate) {
+        this.id = id;
+        this.reading = reading;
+        this.listening = listening;
+        this.writing = writing;
+        this.speaking = speaking;
+        this.nextExamDate = nextExamDate;
+    }
 
     public UUID getId() {
         return id;

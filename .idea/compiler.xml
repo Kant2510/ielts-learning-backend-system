@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="auth-module" />
+        <module name="api-gateway" />
       </profile>
       <profile name="Annotation profile for user-module" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -23,6 +24,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-gateway" options="-parameters" />
       <module name="auth-module" options="-parameters" />
       <module name="user-module" options="-parameters" />
     </option>

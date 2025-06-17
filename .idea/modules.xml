@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/IELTS-Learning.iml" filepath="$PROJECT_DIR$/IELTS-Learning.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-gateway/api-gateway.iml" filepath="$PROJECT_DIR$/api-gateway/api-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/auth-module/auth-module.iml" filepath="$PROJECT_DIR$/auth-module/auth-module.iml" />
       <module fileurl="file://$PROJECT_DIR$/user-module/user-module.iml" filepath="$PROJECT_DIR$/user-module/user-module.iml" />
     </modules>

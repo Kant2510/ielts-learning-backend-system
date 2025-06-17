@@ -20,7 +20,7 @@ public class UserGRPCClientService {
 
     public UserGRPCClientService(
             @Value("${user.service.address:localhost}") String serverAddress,
-            @Value("${user.service.grpc.port:5000}") int serverPort) {
+            @Value("${user.service.grpc.port:9000}") int serverPort) {
 
         log.info("Connecting to User Service GRPC service at {}:{}",
                 serverAddress, serverPort);

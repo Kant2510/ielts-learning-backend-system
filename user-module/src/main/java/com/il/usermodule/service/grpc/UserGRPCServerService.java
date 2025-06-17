@@ -30,7 +30,7 @@ public class UserGRPCServerService extends UserServiceImplBase {
     @Override
     public void createUser(UserRequest userRequest, StreamObserver<UserResponse> responseObserver) {
 
-        log.info("createBillingAccount request received {}", UserRequest.parser().toString());
+        log.info("createUser request received {}", UserRequest.parser());
 
         // Business logic - e.g save to database, perform calculates etc
 

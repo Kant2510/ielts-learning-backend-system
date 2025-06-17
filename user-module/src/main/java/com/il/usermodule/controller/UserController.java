@@ -1,7 +1,7 @@
 package com.il.usermodule.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.il.usermodule.dto.UserResponseDTO;
@@ -11,7 +11,6 @@ import com.il.usermodule.service.UserService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
 public class UserController {
     private final UserService userService;
 
@@ -26,7 +25,7 @@ public class UserController {
         return userService.getAllUsers();
     }
     @GetMapping("/target")
-    public UserTargetResponseDTO getTarget() {
-        return userService.getTarget();
+    public UserTargetResponseDTO getTarget(@RequestHeader("userId") String userId) {
+        return userService.getTarget(userId);
     }
 }

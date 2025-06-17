@@ -1,0 +1,24 @@
+server:
+    port: 5000 # Gateway listens on port 5000
+
+spring:
+    cloud:
+        gateway:
+            server:
+                webflux:
+                    routes:
+                        - id: auth-module-route
+                          uri: http://auth-module:8001
+                          predicates:
+                              - Path=/auth/**
+                          filters:
+                              - StripPrefix=1
+
+                        # Route for /api/user/** to user-module
+                        - id: user-module-route
+                          uri: http://user-module:8000
+                          predicates:
+                              - Path=/api/v1/user/**
+                          filters:
+                              - StripPrefix=3
+                              - Jwt
