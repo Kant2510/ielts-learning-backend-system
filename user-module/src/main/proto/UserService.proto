@@ -13,7 +13,7 @@ message UserRequest {
   string last_name = 3;
   string avatar = 4;
   bool is_email_notification = 5;
-  int64 vocab_usage_count = 6;
+  int32 vocab_usage_count = 6;
 }
 
 message UserResponse {

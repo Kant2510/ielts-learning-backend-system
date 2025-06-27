@@ -42,7 +42,7 @@ public class UserGRPCClientService {
                 .build();
 
         UserResponse response = blockingStub.createUser(request);
-        log.info("Received response from User service via GRPC: {}", response);
+        log.info("Received response from User service via GRPC:\n{}", response);
         return response;
     }
 }

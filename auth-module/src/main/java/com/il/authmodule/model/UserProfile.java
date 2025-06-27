@@ -2,6 +2,8 @@ package com.il.authmodule.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 import java.util.UUID;
@@ -9,6 +11,8 @@ import java.util.UUID;
 @Entity
 @Table(name = "user_profile")
 public class UserProfile {
+    @Setter
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
@@ -93,9 +97,6 @@ public class UserProfile {
     public BuilderChain BuildMore() {
         return new BuilderChain(this);
     }
-
-    public UUID getId() { return id; }
-    public void setId(UUID id) { this.id = id; }
 
     public @NotNull String getFirstName() { return first_name; }
 

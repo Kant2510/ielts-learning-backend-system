@@ -31,36 +31,4 @@ public class JWTService {
                 .signWith(rsaKeyConfig.getPrivateKey())
                 .compact();
     }
-
-//    public boolean validateToken(String token) {
-//        // Logic to validate the JWT token
-//        try {
-//            Jwts.parser()
-//                .verifyWith((SecretKey) secretKey)
-//                .build()
-//                .parseSignedClaims(token);
-//            return true;
-//        } catch (SignatureException e) {
-//            throw new JwtException("Invalid JWT signature");
-//        } catch (JwtException e) {
-//            throw new JwtException("Invalid JWT");
-//        }
-//    }
-//
-//    public UUID extractUserID(String token) {
-//        String userID = Jwts.parser()
-//                .verifyWith((SecretKey) secretKey)
-//                .build()
-//                .parseSignedClaims(token)
-//                .getPayload()
-//                .getSubject();
-//        if (userID == null || userID.isEmpty()) {
-//            throw new JwtException("Invalid JWT token: User ID not found");
-//        }
-//        try {
-//            return UUID.fromString(userID);
-//        } catch (IllegalArgumentException e) {
-//            throw new JwtException("Invalid JWT token: User ID is not a valid UUID", e);
-//        }
-//    }
 }

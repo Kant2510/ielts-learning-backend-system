@@ -32,31 +32,31 @@ public class RSAKeyConfig {
         }
     }
 
-    private PrivateKey convertStringToRSAPrivateKey(String rawKey) throws InvalidKeySpecException, NoSuchAlgorithmException {
-        byte[] keyBytes = Base64.getDecoder().decode(rawKey);
-        PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(keyBytes);
-        return keyFactory.generatePrivate(keySpec);
-    }
-
-    private PublicKey convertStringToRSAPublicKey(String rawKey) throws InvalidKeySpecException, NoSuchAlgorithmException {
-        byte[] keyBytes = Base64.getDecoder().decode(rawKey);
-        X509EncodedKeySpec keySpec = new X509EncodedKeySpec(keyBytes);
-        return keyFactory.generatePublic(keySpec);
-    }
-
-    public RSAPrivateKey getPrivateKey() {
+    private PrivateKey convertStringToRSAPrivateKey(String rawKey) {
         try {
-            return (RSAPrivateKey) convertStringToRSAPrivateKey(rawPrivateKey);
-        } catch (InvalidKeySpecException | NoSuchAlgorithmException e) {
+            byte[] keyBytes = Base64.getDecoder().decode(rawKey);
+            PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(keyBytes);
+            return keyFactory.generatePrivate(keySpec);
+        } catch (InvalidKeySpecException e) {
             throw new RuntimeException("Failed to convert raw private key to RSAPrivateKey", e);
         }
     }
 
-    public RSAPublicKey getPublicKey() {
+    private PublicKey convertStringToRSAPublicKey(String rawKey) {
         try {
-            return (RSAPublicKey) convertStringToRSAPublicKey(rawPublicKey);
-        } catch (InvalidKeySpecException | NoSuchAlgorithmException e) {
+            byte[] keyBytes = Base64.getDecoder().decode(rawKey);
+            X509EncodedKeySpec keySpec = new X509EncodedKeySpec(keyBytes);
+            return keyFactory.generatePublic(keySpec);
+        } catch (InvalidKeySpecException e) {
             throw new RuntimeException("Failed to convert raw public key to RSAPublicKey", e);
         }
+    }
+
+    public RSAPrivateKey getPrivateKey() {
+        return (RSAPrivateKey) convertStringToRSAPrivateKey(rawPrivateKey);
+    }
+
+    public RSAPublicKey getPublicKey() {
+        return (RSAPublicKey) convertStringToRSAPublicKey(rawPublicKey);
     }
 }

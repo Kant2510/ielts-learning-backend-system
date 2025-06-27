@@ -6,12 +6,14 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import com.il.authmodule.constant.AuthConstant;
+import lombok.Getter;
 
 import java.util.UUID;
 
 @Entity
 @Table(name = "auth")
 public class Auth {
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
@@ -101,8 +103,6 @@ public class Auth {
         return new BuilderChain(this);
     }
 
-    public UUID getId() { return id; }
-
     public @NotNull @Email String getEmail() { return email; }
 
     public @NotNull @Size(min = 8, message = "Password must be at least 8 characters long") String getPassword() { return password; }
@@ -116,4 +116,19 @@ public class Auth {
     public @NotNull UserProfile getUserProfile() { return userProfile; }
     public void setUserProfile(@NotNull UserProfile userProfile) { this.userProfile = userProfile; }
 
+    public void logger() {
+        System.out.println("New Auth object with User Profile: ");
+        System.out.println("Auth ID: " + id);
+        System.out.println("Email: " + email);
+        System.out.println("Password: " + password);
+        System.out.println("Provider: " + provider);
+        System.out.println("Role: " + role);
+        System.out.println("Is Banned: " + is_banned);
+        System.out.println("User Profile ID: " + userProfile.getId());
+        System.out.println("User Profile First Name: " + userProfile.getFirstName());
+        System.out.println("User Profile Last Name: " + userProfile.getLastName());
+        System.out.println("User Profile Avatar: " + userProfile.getAvatar());
+        System.out.println("User Profile Is Email Notification: " + userProfile.getIsEmailNotification());
+        System.out.println("User Profile Vocab Usage Count: " + userProfile.getVocabUsageCount());
+    }
 }
