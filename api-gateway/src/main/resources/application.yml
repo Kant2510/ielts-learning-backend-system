@@ -14,11 +14,20 @@ spring:
                           filters:
                               - StripPrefix=1
 
-                        # Route for /api/user/** to user-module
+                        # Route for /api/v1/user/** to user-module
                         - id: user-module-route
                           uri: http://user-module:8000
                           predicates:
                               - Path=/api/v1/user/**
+                          filters:
+                              - StripPrefix=3
+                              - Jwt
+
+                        # Route for /api/v1/quiz/** to quiz-module
+                        - id: quiz-module-route
+                          uri: http://quiz-module:8002
+                          predicates:
+                              - Path=/api/v1/quiz/**
                           filters:
                               - StripPrefix=3
                               - Jwt

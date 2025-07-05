@@ -5,6 +5,7 @@
     <file url="file://$PROJECT_DIR$/auth-module/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/auth-module/target/generated-sources/protobuf/grpc-java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/auth-module/target/generated-sources/protobuf/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/quiz-module/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/user-module/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/user-module/target/generated-sources/protobuf/grpc-java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/user-module/target/generated-sources/protobuf/java" charset="UTF-8" />
