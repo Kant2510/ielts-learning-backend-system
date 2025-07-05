@@ -1,0 +1,100 @@
+version: '3.8'
+
+services:
+    postgres:
+        image: postgres:17
+        container_name: postgres
+        restart: always
+        environment:
+            POSTGRES_USER: ${POSTGRES_USER}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+            POSTGRES_DB: ${POSTGRES_DB}
+        volumes:
+            - postgres-data:/var/lib/postgresql/data
+        ports:
+            - "${POSTGRES_PORT}:5432"
+        networks:
+            - "${NETWORK_HOST}"
+
+    user-module:
+        build:
+            context: ./user-module
+            dockerfile: Dockerfile
+        container_name: user-module
+        ports:
+            - "${USER_PORT_REST}:${USER_PORT_REST}"
+            - "${USER_PORT_GRPC}:${USER_PORT_REST}"
+        depends_on:
+            - postgres
+        environment:
+            SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+            SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+            SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+            SPRING_JPA_HIBERNATE_DDL_AUTO: ${SPRING_JPA_HIBERNATE_DDL_AUTO}
+            SPRING_SQL_INIT_MODE: ${SPRING_SQL_INIT_MODE}
+        networks:
+            - "${NETWORK_HOST}"
+
+    auth-module:
+        build:
+            context: ./auth-module
+            dockerfile: Dockerfile
+        container_name: auth-module
+        ports:
+            - "${AUTH_PORT}:${AUTH_PORT}"
+        depends_on:
+            - postgres
+        environment:
+            SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+            SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+            SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+            SPRING_JPA_HIBERNATE_DDL_AUTO: ${SPRING_JPA_HIBERNATE_DDL_AUTO}
+            SPRING_SQL_INIT_MODE: ${SPRING_SQL_INIT_MODE}
+            JWT_EXPIRATION_TIME: ${JWT_EXPIRATION_TIME}
+            RSA_PUBLIC_KEY: ${RSA_PUBLIC_KEY}
+            RSA_PRIVATE_KEY: ${RSA_PRIVATE_KEY}
+            USER_SERVICE_ADDRESS: ${USER_SERVICE_ADDRESS}
+            USER_SERVICE_GRPC_PORT: ${USER_SERVICE_GRPC_PORT}
+        networks:
+            - "${NETWORK_HOST}"
+
+    quiz-module:
+        build:
+            context: ./quiz-module
+            dockerfile: Dockerfile
+        container_name: quiz-module
+        ports:
+            - "${QUIZ_PORT}:${QUIZ_PORT}"
+        depends_on:
+            - postgres
+        environment:
+            SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+            SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+            SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+            SPRING_JPA_HIBERNATE_DDL_AUTO: ${SPRING_JPA_HIBERNATE_DDL_AUTO}
+            SPRING_SQL_INIT_MODE: ${SPRING_SQL_INIT_MODE}
+        networks:
+            - "${NETWORK_HOST}"
+
+    api-gateway:
+        build:
+            context: ./api-gateway
+            dockerfile: Dockerfile
+        container_name: api-gateway
+        ports:
+            - "${GATEWAY_PORT}:${GATEWAY_PORT}"
+        depends_on:
+            - auth-module
+            - user-module
+            - quiz-module
+        environment:
+            AUTH_MODULE_JWK_ENDPOINT: ${AUTH_MODULE_JWK_ENDPOINT}
+        networks:
+            - "${NETWORK_HOST}"
+
+volumes:
+    postgres-data:
+
+networks:
+    internal:
+        driver: bridge
