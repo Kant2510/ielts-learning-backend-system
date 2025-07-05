@@ -15,7 +15,6 @@
 -   [📄 API Documentation](#-api-documentation)
 -   [🗺️ Roadmap](#️-roadmap)
 -   [🤝 Contributing](#-contributing)
--   [📜 License](#-license)
 -   [📬 Contact](#-contact)
 -   [🙏 Acknowledgements](#-acknowledgements)
 
@@ -67,7 +66,7 @@ Ensure you have the following installed on your machine:
 
 -   **Java 17** or **21**
 -   **Maven**
--   **Docker & Docker Compose**
+-   **Docker** & **Docker Compose**
 -   **PostgreSQL** (if not using Docker for DB)
 -   **Git**
 
@@ -88,7 +87,7 @@ docker-compose --version
 
 1. Clone the repository [IELTS Learning Backend System](https://github.com/Kant2510/ielts-learning-backend-system)
     ```bash
-    git clone https://github.com/Kant2510/ielts-learning-backend-system
+    git clone https://github.com/Kant2510/ielts-learning-backend-system.git
     cd ielts-learning-backend
     ```
 2. Build the project
@@ -176,7 +175,7 @@ Any contributions you make are **greatly appreciated**.
 ## 📬 Contact
 
 -   Email: [auletuannhat@gmail.com](mailto:auletuannhat@gmail.com)
--   Github: [Kant2510](https://github.com/Kant2510/ielts-learning-backend-system)
+-   Github: [Kant2510](https://github.com/Kant2510)
 -   LinkedIn: [Nhat Au](https://www.linkedin.com/in/nhat-au-73a629283)
 
 ---
