@@ -31,3 +31,25 @@ spring:
                           filters:
                               - StripPrefix=3
                               - Jwt
+
+                        # Route for /api/v1/question/** to question-module# Route for /api/docs/patients to patient-service /v3/api-docs
+                        - id: api-docs-user-route
+                          uri: http://user-module:8000
+                          predicates:
+                            - Path=/api-docs/user
+                          filters:
+                            - RewritePath=/api-docs/user, /v3/api-docs
+
+                        - id: api-docs-auth-route
+                          uri: http://auth-module:8001
+                          predicates:
+                            - Path=/api-docs/auth
+                          filters:
+                            - RewritePath=/api-docs/auth, /v3/api-docs
+
+                        - id: api-docs-quiz-route
+                          uri: http://quiz-module:8002
+                          predicates:
+                            - Path=/api-docs/quiz
+                          filters:
+                            - RewritePath=/api-docs/quiz, /v3/api-docs

@@ -1,5 +1,7 @@
 package com.il.authmodule.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +15,7 @@ import com.il.authmodule.dto.RegisterResponseDTO;
 import com.il.authmodule.service.AuthService;
 
 @RestController
+@Tag(name = "Auth API", description = "APIs for authentication")
 public class AuthController {
     private final AuthService authService;
 
@@ -21,6 +24,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
+    @Operation(summary = "Register a new user")
     public ResponseEntity<RegisterResponseDTO> register(@RequestBody RegisterRequestDTO request) {
         if (request.getEmail() == null || request.getPassword() == null ||
             request.getFirstName() == null || request.getLastName() == null ||
@@ -34,6 +38,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
+    @Operation(summary = "Login a user")
     public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginRequestDTO request) {
         LoginResponseDTO authResult = authService.authenticate(request);
 

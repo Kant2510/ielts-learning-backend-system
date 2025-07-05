@@ -5,7 +5,6 @@ import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.UUID;
 
 @Repository
 public class QuizCustomRepoImpl implements QuizCustomRepo {

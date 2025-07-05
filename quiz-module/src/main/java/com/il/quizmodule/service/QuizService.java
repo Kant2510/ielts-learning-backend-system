@@ -6,7 +6,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import com.il.quizmodule.QuizSpecification;
+import com.il.quizmodule.repository.QuizSpecification;
 import com.il.quizmodule.dto.QuizResponseDTO;
 import com.il.quizmodule.mapper.QuizMapper;
 import com.il.quizmodule.model.GetQuizzesParam;
@@ -17,7 +17,6 @@ import com.il.quizmodule.repository.QuizRepo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 
 @Service
 public class QuizService {

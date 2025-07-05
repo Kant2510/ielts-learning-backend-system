@@ -5,8 +5,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 import com.il.quizmodule.model.Quiz;
-import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Repository

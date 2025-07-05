@@ -1,10 +1,10 @@
-package com.il.quizmodule;
+package com.il.quizmodule.repository;
 
-import com.il.quizmodule.model.Quiz;
 import org.springframework.data.jpa.domain.Specification;
 
+import com.il.quizmodule.model.Quiz;
+
 import java.util.List;
-import java.util.UUID;
 
 public class QuizSpecification {
     public static Specification<Quiz> hasType(Integer type) {
